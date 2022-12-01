@@ -67,7 +67,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
       {required String baseUrl, required String sessionId}) async {
     while (authStateType == AuthStateType.waiting4Approve) {
       final res = await ref
-          .read(misskeyApiProviderFamily(baseUrl))
+          .read(misskeyApiFactoryProvider)
+          .create(baseUrl)
           .checkAuth(sessionId);
       if (res.ok) {
         // 取得したTokenを保存する
