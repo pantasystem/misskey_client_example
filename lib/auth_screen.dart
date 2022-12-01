@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:misskey_client_example/api/misskey_api.dart';
+import 'package:misskey_client_example/auth_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
@@ -62,6 +66,18 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Future<void> _waitingAuth(
       {required String baseUrl, required String sessionId}) async {
     while (authStateType == AuthStateType.waiting4Approve) {
+      final res = await ref
+          .read(misskeyApiProviderFamily(baseUrl))
+          .checkAuth(sessionId);
+      if (res.ok) {
+        // 取得したTokenを保存する
+        await ref.read(authServiceProvider).saveToken(token: res.token);
+        log('取得したToken: ${res.token}');
+        setState(() {
+          authStateType = AuthStateType.success;
+        });
+        return;
+      }
       // userが許可を押したのかをチェックする。
       await Future.delayed(const Duration(milliseconds: 3000));
     }
