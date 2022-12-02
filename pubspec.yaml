@@ -43,6 +43,7 @@ dependencies:
   uuid: ^3.0.7
   url_launcher: ^6.1.7
   shared_preferences: ^2.0.15
+  go_router: ^5.2.0
 
 dev_dependencies:
   flutter_test:
