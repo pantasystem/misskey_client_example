@@ -53,7 +53,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         session: session,
         baseUrl: baseUrl,
         appName: 'FlutterMisskeyApp',
-        permissions: ["read:account", "write:account"]);
+        permissions: ["read:account", "write:account", "write:notes"]);
 
     launch(url);
     setState(() {
