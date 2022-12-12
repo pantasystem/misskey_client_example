@@ -28,7 +28,16 @@ class TimelineScreen extends ConsumerWidget {
       body: ListView.builder(
         itemCount: timelineNotifier.notes.length,
         itemBuilder: (BuildContext context, int index) {
+          if (index == timelineNotifier.notes.length - 1) {
+            timelineNotifier.fetchNext();
+          }
           return NoteCard(timelineNotifier.notes[index]);
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          GoRouter.of(context).push('/create-note');
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:misskey_client_example/api/note_editor_screen.dart';
 import 'package:misskey_client_example/auth_screen.dart';
 import 'package:misskey_client_example/timeline_screen.dart';
 
@@ -22,6 +23,11 @@ final _router = Provider((ref) {
         return const TimelineScreen();
       },
     ),
+    GoRoute(
+        path: '/create-note',
+        builder: (BuildContext context, GoRouterState state) {
+          return const NoteEditorScreen();
+        })
   ]);
 });
 
