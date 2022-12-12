@@ -9,11 +9,11 @@ part of 'create_note_response.dart';
 _$_CreateNoteResponse _$$_CreateNoteResponseFromJson(
         Map<String, dynamic> json) =>
     _$_CreateNoteResponse(
-      createNote: Note.fromJson(json['createNote'] as Map<String, dynamic>),
+      createdNote: Note.fromJson(json['createdNote'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CreateNoteResponseToJson(
         _$_CreateNoteResponse instance) =>
     <String, dynamic>{
-      'createNote': instance.createNote,
+      'createdNote': instance.createdNote,
     };

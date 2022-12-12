@@ -7,7 +7,7 @@ part 'create_note_response.g.dart';
 @freezed
 class CreateNoteResponse with _$CreateNoteResponse {
   CreateNoteResponse._();
-  factory CreateNoteResponse({required Note createNote}) = _CreateNoteResponse;
+  factory CreateNoteResponse({required Note createdNote}) = _CreateNoteResponse;
 
   factory CreateNoteResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateNoteResponseFromJson(json);
