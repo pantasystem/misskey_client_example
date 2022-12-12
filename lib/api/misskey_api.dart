@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:misskey_client_example/api/dto/check_auth_response.dart';
+import 'package:misskey_client_example/api/dto/create_note_request.dart';
+import 'package:misskey_client_example/api/dto/create_note_response.dart';
 import 'package:misskey_client_example/api/dto/note.dart';
 import 'package:misskey_client_example/api/dto/timeline_request.dart';
 import 'package:retrofit/retrofit.dart';
@@ -15,6 +17,9 @@ abstract class MisskeyApi {
 
   @POST("/api/notes/hybrid-timeline")
   Future<List<Note>> getHybridTimeline(@Body() TimelineRequest request);
+
+  @POST("/api/notes/create")
+  Future<CreateNoteResponse> createNote(@Body() CreateNoteRequest request);
 }
 
 class MisskeyApiFactory {
